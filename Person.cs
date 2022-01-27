@@ -16,6 +16,7 @@ namespace Currency_Exchange2022.Models
         };
         public string Name { get; set; }
 
+
         public string Email { get; set; }
 
         public string LastName { get; set; }
@@ -47,7 +48,7 @@ namespace Currency_Exchange2022.Models
 
         }
     }
-    
+
 
 
 }
