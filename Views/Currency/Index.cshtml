@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Currency_Exchange2022.ViewModels.Currency.AddCurrencyViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Currency</h2>
+@if (Session["email"] != null && Currency_Exchange2022.Models.RoleType.Admin == (Currency_Exchange2022.Models.RoleType)Session["role"])
+{
+    <p>
+        @Html.ActionLink("Add a new Currency", "Add")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellRate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BuyRate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SellRate)
+    </td>
+    @if (Session["email"] != null && Currency_Exchange2022.Models.RoleType.Admin == (Currency_Exchange2022.Models.RoleType)Session["role"])
+    {
+        <td>
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    }
+</tr>
+    }
+
+</table>

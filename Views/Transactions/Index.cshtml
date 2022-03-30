@@ -1,0 +1,30 @@
+﻿@*@model Currency_Exchange2022.ViewModels.Currency.AddTransactionViewModel
+
+
+@{
+    ViewBag.Title = "Make a Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Bej konvertim</h2>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action("Transaction","Add")" class="btn btn-success">Shto</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>InputbCurrencyType</th>
+                <th>Monedha</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.inpu</td>
+                    
+                </tr>
+            }
+        </table>
+    </div>
+</div>*@

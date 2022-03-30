@@ -1,0 +1,127 @@
+﻿@model Currency_Exchange2022.ViewModels.Currency.AddTransactionViewModel
+
+
+@{ ViewBag.Title = "Home Page"; }
+
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Currency Converter App in JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAweome CDN Link for Icons -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />*@
+
+    <link href="~/Style/StyleHomePage.css" rel="stylesheet" />
+    @*<script src="~/js/JavaScript.js"></script>*@
+    @*<script src="~/js/Flag.js"></script>*@
+</head>
+<body>
+    <div class="wrapper">
+        <header>Currency Converter</header>
+        @using (Html.BeginForm("CalculateValue", "Home", FormMethod.Post))
+        {
+            @*<div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(m => m.InputCurrencyType)
+                @Html.DropDownListFor(m => m.SelectedInputCurrencyType, new SelectList(Model.InputCurrencyType, "Value", "Text"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.InputCurrencyType, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.InputCurrencyAmount)
+                @Html.TextBoxFor(m => m.InputCurrencyAmount, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.InputCurrencyAmount, "", new
+                {
+                    @class = "text-danger"@*, @onblur = "calculateValue"*@})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OutputCurrencyType)
+                @Html.DropDownListFor(m => m.SelectedOutputCurrencyType, new SelectList(Model.OutputCurrencyType, "Value", "Text"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.OutputCurrencyType, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OutputCurrencyAmount)
+                @Html.TextBoxFor(m => m.OutputCurrencyAmount, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.OutputCurrencyAmount, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <input type="submit" value="Calculate Value" class="btn btn-default" />
+                @*@Html.ActionLink("Calculate Value", "CalculateValue", Model)*@
+            </div>
+        @*<input type="button"
+                   value="Bej Konvertimin"
+                   onclick="location.href='<%: Url.Action(" CalculateValue")%'>*@
+            @*<button type="submit" class="btn btn-primary">Shto</button>*@
+        }
+
+        @*<script type="text/javascript">
+        $("#InputCurrencyAmount").blur(function () {
+            $.ajax({
+        url: "@Url.Action("CalculateValue", "Home")",
+                type: "POST",
+                //data: $("#form-control").serialize(),
+                data: { outputCurrencyTypeId: @Model.SelectedOutputCurrencyType, inputCurrencyTypeId: @Model.SelectedInputCurrencyType, inputAmount: @Model.InputCurrencyAmount },
+                dataType: "json"
+            }).done(function (model) {
+                $("#OutputCurrencyAmount").val(model.outputCurrencyAmount);
+            });
+        });
+        </script>*@
+
+        @*<script type="text/javascript">
+            function calculateValue() {
+
+            }
+        </script>
+        $.ajax({
+        url: "@Url.Action("CalculateValue", "Home")",
+        type: "POST",
+        data: { outputCurrencyTypeId: @Model.SelectedOutputCurrencyType, inputCurrencyTypeId: @Model.SelectedInputCurrencyType, inputAmount: @Model.InputCurrencyAmount },
+        success: function(data) {*@
+
+        @*<form action="#">
+            <div class="amount">
+                <p>Enter Amount</p>
+                <input type="text" value="1">
+            </div>
+            <div class="drop-list">
+                <div class="from">
+                    <p>From</p>
+                    <div class="select-box">
+                        <img src="https://flagcdn.com/48x36/us.png" alt="flag">
+                        <select>
+             Options tag are inserted from JavaScript
+            </select>
+            </div>
+        </div>
+        <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+        <div class="to">
+            <p>To</p>
+            <div class="select-box">
+                <img src="https://flagcdn.com/48x36/eu.png" alt="flag">
+                <select>
+             Options tag are inserted from JavaScript
+            </select>
+
+                    </div>
+                    <input type="text" value="1">
+                </div>
+            </div>
+            <div class="exchange-rate">Getting exchange rate...</div>
+            <button>Get Exchange Rate</button>
+        </form>*@
+    </div>
+    @*<script src="~/js/Flag.js"></script>
+        <script src="~/js/JavaScript.js"></script>*@
+</body>
+</html>
